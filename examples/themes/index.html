@@ -8,33 +8,73 @@
   <link rel="icon" href="data:image/x-icon;," type="image/x-icon">
   <link rel="stylesheet" href="./css/index.css"/>
   <script src="./js/index.js" type="module"></script>
-  <style>
-        body {
-            font-family: 'Dosis', sans-serif;
-            font-size: 22px;
-            background: url('./img/bg.jpg') no-repeat center top fixed;
-            background-size: cover;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            margin: 25px 15px 15px 15px;
 
-        }
+  <style>
+    /* Ensure body and html take up full height */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Prevents unwanted scrolling */
+    }
+
+    /* Background video styling */
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the video covers the entire background */
+      z-index: -1; /* Keeps the video behind other content */
+      pointer-events: none; /* Ensures the video doesn't capture any mouse events */
+    }
+
+    /* General content styling */
+    .content {
+      position: relative;
+      z-index: 1; /* Ensures the content is above the video */
+      color: white; /* Adjust the text color for visibility over the video */
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh; /* Ensure content takes at least full screen height */
+    }
+
+    /* Optional: Style adjustments for better UI visibility */
+    button {
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      cursor: pointer;
+      color: black;
+    }
+
+    select {
+      padding: 5px;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: black;
+    }
   </style>
 </head>
 
 <body>
-  <div class="gui-wrapper">
-    <p>Click-drag (or touch-flick) to spin the wheel.</p>
-    <div>
-      <button>Spin</button>
-      <p><label>Theme:</label><select></select></p>
-    </div>
-  </div>
+  <!-- Background Video -->
+  <video autoplay muted loop id="background-video">
+    <source src="loop.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  <div class="wheel-wrapper" style="margin:150px;"></div>
+  <!-- Main Content -->
+  <div class="content">
+    <div class="gui-wrapper">
+      <p>Click-drag (or touch-flick) to spin the wheel.</p>
+      <div>
+        <button>Spin</button>
+        <p><label>Theme:</label><select></select></p>
+      </div>
+    </div>
+    <div class="wheel-wrapper"></div>
+  </div>
 </body>
 
 </html>
